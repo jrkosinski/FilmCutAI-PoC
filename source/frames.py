@@ -1,5 +1,5 @@
 import cv2
-vidcap = cv2.VideoCapture('sample.mp4')
+vidcap = cv2.VideoCapture('./media/home1.mp4')
 #success,image = vidcap.read()
 count = 0
 success = True
@@ -9,5 +9,9 @@ while success:
   
   count += 1
   
-  if (count >= 3): 
+  if count % 1000 == 0: 
+      print(count)
+  if count > 3: 
       break
+  
+print(count)

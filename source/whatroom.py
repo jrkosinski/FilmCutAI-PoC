@@ -17,7 +17,7 @@ content = [
       ]
   
 for n in range(1, 13): 
-    img = encode_image("room-pics/" + str(n) + ".jpg")
+    img = encode_image("./media/room-pics/" + str(n) + ".jpg")
     content.append({
           "type": "image_url",
           "image_url": {
