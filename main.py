@@ -19,6 +19,11 @@ image2 = frames[200]
 imgdata1 = encode_frame_base64(image1)
 imgdata2 = encode_frame_base64(image2)
 
+subframes = []
+for i in range (10, 30): 
+    subframes.append(frames[i])
+cap.framesToVideo(subframes, "./subframes.mp4")
+
 '''
 answer = llm.send({
       "role": "user",
