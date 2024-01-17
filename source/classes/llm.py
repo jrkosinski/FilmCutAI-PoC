@@ -39,6 +39,12 @@ class LLM_OpenAI (LLM):
             messages=messages
         )
         
+        print(completion.choices)
         return completion.choices[0].message.content
             
 
+class LLM_OpenAI_Vision (LLM_OpenAI): 
+    def __init__(self):
+        LLM_OpenAI.__init__(self, "gpt-4-vision-preview")
+    
+            

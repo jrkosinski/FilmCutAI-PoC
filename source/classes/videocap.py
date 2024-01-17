@@ -14,7 +14,6 @@ class VideoCap:
     def process(self, file_path, limit: int=0): 
         self.capture = cv2.VideoCapture(file_path)
         self.frames = []
-        #success,image = vidcap.read()
         
         #detect framerate
         
@@ -41,6 +40,22 @@ class VideoCap:
         out = cv2.VideoWriter(output_path, cv2.VideoWriter_fourcc('X','V','I','D'), self.frame_rate, (self.frame_width, self.frame_height))
         for frame in frames:
             out.write(frame)
+            
+    #TODO: correct format
+    def splice(self, video_path, output_path, output_format = "mp4v"): 
+        vid = VideoCap()
+        vid.process(video_path)
+        self.splice_capture(vid, output_path, output_format)
+        
+    #TODO: correct format
+    def splice_capture(self, vid, output_path, output_format = "mp4v"): 
+        frames = []
+        for i in range(self.frame_count()): 
+            frames.append(self.frames[i])
+        for i in range(vid.frame_count()): 
+            frames.append(vid.frames[i])
+            
+        self.framesToVideo(frames, output_path, output_format)
         
     def release(self):
         if (self.capture is not None):
