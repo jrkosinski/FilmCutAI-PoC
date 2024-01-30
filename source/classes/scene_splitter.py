@@ -15,6 +15,6 @@ class SceneSplitter:
             output_dir += "/"
             
         if (write_out_scenes): 
-            split_video_ffmpeg(video_path, scene_list)
+            split_video_ffmpeg(video_path, scene_list) #, output_file_template='$VIDEO_NAME-Scene-$SCENE_NUMBER.')
         return scene_list
 

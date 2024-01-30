@@ -1,7 +1,5 @@
 from classes.scene_splitter import SceneSplitter
 
-from classes.scene_splitter import SceneSplitter
-
 splitter = SceneSplitter()
 scenes = splitter.find_scenes('./media/homevid.avi')
 print(scenes)

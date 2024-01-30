@@ -1,27 +1,8 @@
-from openai import OpenAI
+from LLM import LLM
 import os
+from openai import OpenAI
 
-class LLM: 
-    def __init__(self, model_name: str): 
-        self.model_name = model_name
-        self.history = []
-    
-    def send(self, input, append_history: bool, options=None): 
-        pass
-    
-    def clear_history(self): 
-        self.history = []
-
-
-class LLM_Llava (LLM): 
-    def __init__(self, model_name):
-        LLM.__init__(self, model_name)
-    
-    def send(self, input, append_history: bool, options=None): 
-        pass
-    
-
-class LLM_OpenAI (LLM): 
+class LLM_OpenAiApi (LLM): 
     def __init__(self, model_name = "gpt-4-1106-preview"):
         LLM.__init__(self, model_name)
         self.client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
@@ -43,8 +24,8 @@ class LLM_OpenAI (LLM):
         return completion.choices[0].message.content
             
 
-class LLM_OpenAI_Vision (LLM_OpenAI): 
+class LLM_OpenAiApi_Vision (LLM_OpenAiApi): 
     def __init__(self):
-        LLM_OpenAI.__init__(self, "gpt-4-vision-preview")
+        LLM_OpenAiApi.__init__(self, "gpt-4-vision-preview")
     
             
