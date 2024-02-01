@@ -19,15 +19,13 @@ class SceneSplitter:
             split_video_ffmpeg(video_path, scene_list)
         
         #afterwards, move files to the appropriate directory
-        
         if (output_dir != "./"): 
             
             #clear directory first
             self._clear_output_dir(output_dir)
             
             files = os.listdir()
-            for i in range(len(files)): 
-                filename = files[i]
+            for filename in files: 
                 #TODO: have to account for different formats
                 if (filename.endswith(".mp4") and filename.find("-Scene-") >= 0): 
                     os.replace("./{0}".format(filename), "{0}{1}".format(output_dir, filename))
